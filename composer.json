@@ -1,0 +1,39 @@
+{
+    "name": "raguzman/docker-codespaces-lemp",
+    "type": "project",
+    "description": "Codespaces LEMP stack",
+    "keywords": ["codespaces", "lemp", "docker", "nginx", "php", "mysql", "mariadb"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "ext-gd": "*",
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.1"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "setup": [
+            "composer install",
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "npm install"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
